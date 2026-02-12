@@ -1,14 +1,28 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="ko">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hello World</title>
-  <link href='/style.css' rel='stylesheet'>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>오늘의 운세</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>Hello, world!</h1>
-  <button onclick="console.log('hello');">Press me</button>
-  <script defer type="text/javascript" src="/main.js"></script>
+    <header>
+        <h1>오늘의 운세</h1>
+        <p id="today-date"></p>
+    </header>
+
+    <main>
+        <section id="selection-section">
+            <h2>어떤 운세를 볼까요?</h2>
+            <horoscope-selector></horoscope-selector>
+            <sign-selector></sign-selector>
+        </section>
+
+        <horoscope-result></horoscope-result>
+    </main>
+
+    <script type="module" src="components.js"></script>
+    <script type="module" src="main.js"></script>
 </body>
 </html>
