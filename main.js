@@ -18,6 +18,8 @@ let bestScoreEl;
 let shareMessageEl;
 let comboTextEl;
 let hypeTextEl;
+let rankEl;
+let resultComboEl;
 
 function loadBestScore() {
   try {
@@ -88,6 +90,14 @@ function handleTap() {
   playTapSound();
 }
 
+function getRank(score) {
+  if (score >= 60) return "🔥 탭 마스터";
+  if (score >= 45) return "⚡ 탭 고수";
+  if (score >= 30) return "👍 탭 중수";
+  if (score >= 15) return "🌱 탭 초보";
+  return "🐢 느긋한 탭";
+}
+
 function endGame() {
   if (timerId) {
     clearInterval(timerId);
@@ -104,6 +114,8 @@ function endGame() {
 
   finalScoreEl.textContent = String(score);
   bestScoreEl.textContent = String(nextBest);
+  rankEl.textContent = getRank(score);
+  resultComboEl.textContent = String(combo);
   showScreen("result");
 }
 
@@ -142,6 +154,8 @@ function initDom() {
   shareMessageEl = document.getElementById("share-message");
   comboTextEl = document.getElementById("combo-text");
   hypeTextEl = document.getElementById("hype-text");
+  rankEl = document.getElementById("rank");
+  resultComboEl = document.getElementById("result-combo");
 
   const required = [
     screens.start,
@@ -159,6 +173,8 @@ function initDom() {
     shareMessageEl,
     comboTextEl,
     hypeTextEl,
+    rankEl,
+    resultComboEl,
   ];
 
   if (required.some((el) => !el)) {
@@ -176,7 +192,6 @@ function init() {
 
   startBtn.addEventListener("click", startGame);
   tapBtn.addEventListener("click", handleTap);
-  tapBtn.addEventListener("pointerdown", handleTap);
   shareBtn.addEventListener("click", shareResult);
   retryBtn.addEventListener("click", startGame);
   soundToggleBtn.addEventListener("click", () => {
