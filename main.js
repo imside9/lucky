@@ -54,16 +54,26 @@ const wordPool = [
 
 // 고양이 유튜브 숏츠 영상 ID 풀
 const catVideoIds = [
-    "JxS5E-kZc2s",
-    "tpiyEe_CqB4",
-    "SMYgcS53Ezk",
-    "tVx2uCcDXAo",
-    "4FnCPCbBgs8",
-    "W86cTIoMv2U",
-    "QH2-TGUlwu4",
-    "j5a0jTc9S10",
-    "hY7m5jjJ9mM",
-    "0Bmhjf0rKe8",
+    "iIk3qJaiwoI",
+    "v798VID-hOY",
+    "6Jp9b9m0oIY",
+    "Oh-fQuQ7Z4M",
+    "wXdFYmxFf9c",
+    "wooa6NJ21yI",
+    "Dh7btZ3fcW0",
+    "jBfW2xaIfyE",
+    "WbvkBAmIof8",
+    "mIPQtKOiAk4",
+    "wJ8UmhB7-QQ",
+    "aGOEDsrFWG8",
+    "S5Buxv-vviM",
+    "vt3O1sVvxsU",
+    "hnIV0KBkurk",
+    "y2Y1Kc4jIGs",
+    "r2yZ9DUCNbw",
+    "XvwADe6_JDI",
+    "gqhiALT99wM",
+    "yLCe-M1i67s",
 ];
 
 // 상태
