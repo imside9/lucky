@@ -1,0 +1,12 @@
+{
+  "name": "tap-challenge-demo",
+  "private": true,
+  "version": "1.0.0",
+  "description": "60-second tap challenge static web demo",
+  "scripts": {
+    "preview": "python3 -m http.server 8787",
+    "cf:login": "npx wrangler login",
+    "cf:deploy:stage": "npx wrangler pages deploy . --project-name ${CF_PAGES_PROJECT:-tap-challenge-demo} --branch ${CF_BRANCH:-stage}",
+    "cf:deploy:prod": "npx wrangler pages deploy . --project-name ${CF_PAGES_PROJECT:-tap-challenge-demo} --branch main"
+  }
+}
