@@ -3,26 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>오늘의 운세</title>
+    <title>Word Quiz & Cat Shorts</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <h1>오늘의 운세</h1>
-        <p id="today-date"></p>
-    </header>
+    <div class="app-container">
+        <!-- 시작 화면 -->
+        <div id="start-screen" class="screen active">
+            <div class="card start-card">
+                <div class="cat-emoji">🐱</div>
+                <h1>영단어 퀴즈</h1>
+                <p class="subtitle">3문제를 맞히면<br>귀여운 고양이 영상을 볼 수 있어요!</p>
+                <button id="start-btn" class="btn btn-primary">퀴즈 시작</button>
+            </div>
+        </div>
 
-    <main>
-        <section id="selection-section">
-            <h2>어떤 운세를 볼까요?</h2>
-            <horoscope-selector></horoscope-selector>
-            <sign-selector></sign-selector>
-        </section>
+        <!-- 퀴즈 화면 -->
+        <div id="quiz-screen" class="screen">
+            <div class="progress-bar">
+                <div class="progress-step" data-step="1">1</div>
+                <div class="progress-line"></div>
+                <div class="progress-step" data-step="2">2</div>
+                <div class="progress-line"></div>
+                <div class="progress-step" data-step="3">3</div>
+            </div>
+            <div class="card quiz-card">
+                <div class="quiz-label">문제 <span id="quiz-number">1</span> / 3</div>
+                <div class="quiz-meaning" id="quiz-meaning"></div>
+                <div class="quiz-hint" id="quiz-hint"></div>
+                <input type="text" id="answer-input" class="answer-input" placeholder="영단어를 입력하세요" autocomplete="off" spellcheck="false">
+                <div id="feedback" class="feedback"></div>
+                <button id="submit-btn" class="btn btn-primary">확인</button>
+            </div>
+        </div>
 
-        <horoscope-result></horoscope-result>
-    </main>
+        <!-- 오답 화면 -->
+        <div id="wrong-screen" class="screen">
+            <div class="card wrong-card">
+                <div class="cat-emoji">😿</div>
+                <h2>아쉬워요!</h2>
+                <p id="wrong-message"></p>
+                <button id="retry-btn" class="btn btn-secondary">다시 도전하기</button>
+            </div>
+        </div>
 
-    <script type="module" src="components.js"></script>
-    <script type="module" src="main.js"></script>
+        <!-- 보상 화면 -->
+        <div id="reward-screen" class="screen">
+            <div class="card reward-card">
+                <div class="cat-emoji">🎉🐱</div>
+                <h2>축하해요! 전부 맞혔어요!</h2>
+                <p class="reward-subtitle">귀여운 고양이 영상을 즐겨보세요</p>
+                <div id="video-container" class="video-container"></div>
+                <button id="replay-btn" class="btn btn-primary">다시 퀴즈 풀기</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
 </body>
 </html>

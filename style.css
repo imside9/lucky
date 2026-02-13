@@ -1,124 +1,64 @@
-@import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
 
-:root {
-    --primary-color: #1a1a2e;
-    --secondary-color: #16213e;
-    --accent-color: #e94560;
-    --text-color: #dcdcdc;
-    --card-bg-color: #2c3e50;
-    --gold-color: #ffd700;
-}
-
-body {
-    background-color: var(--primary-color);
-    color: var(--text-color);
-    font-family: 'Gowun Dodum', sans-serif;
+* {
     margin: 0;
     padding: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-height: 100vh;
-}
-
-header {
-    text-align: center;
-    padding: 2rem 1rem;
-    width: 100%;
-    background-color: var(--secondary-color);
-    border-bottom: 2px solid var(--gold-color);
-}
-
-header h1 {
-    margin: 0;
-    font-size: 2.5rem;
-    color: var(--gold-color);
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-}
-
-#today-date {
-    font-size: 1.2rem;
-    margin-top: 0.5rem;
-}
-
-main {
-    width: 100%;
-    max-width: 900px;
-    padding: 1rem;
     box-sizing: border-box;
 }
 
-section {
-    background-color: var(--secondary-color);
-    margin-bottom: 2rem;
-    padding: 1.5rem;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    border: 1px solid var(--gold-color-translucent, rgba(255, 215, 0, 0.2));
+:root {
+    --bg: #f5f3f0;
+    --card-bg: #ffffff;
+    --pink: #ff8fab;
+    --pink-light: #ffc2d1;
+    --yellow: #ffd166;
+    --yellow-light: #fff3cd;
+    --green: #83c5be;
+    --green-light: #d8f3dc;
+    --text-dark: #2b2d42;
+    --text-muted: #8d99ae;
+    --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    --radius: 20px;
 }
 
-h2 {
-    color: var(--gold-color);
-    border-bottom: 1px solid var(--gold-color);
-    padding-bottom: 0.5rem;
-    margin-top: 0;
-}
-
-#horoscope-selector {
+body {
+    font-family: 'Jua', sans-serif;
+    background-color: var(--bg);
+    color: var(--text-dark);
+    min-height: 100vh;
     display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 20px;
+}
+
+.app-container {
+    width: 100%;
+    max-width: 420px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
 }
 
-.horoscope-option {
-    background-color: var(--card-bg-color);
-    color: var(--text-color);
-    border: 1px solid var(--gold-color);
-    padding: 1rem 1.5rem;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 1.1rem;
-    transition: all 0.3s ease;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-}
-
-.horoscope-option:hover, .horoscope-option.active {
-    background-color: var(--gold-color);
-    color: var(--primary-color);
-    transform: translateY(-5px);
-    box-shadow: 0 4px 12px rgba(255, 215, 0, 0.4);
-}
-
-#result-section {
+/* 화면 전환 */
+.screen {
     display: none;
-    padding: 2rem;
+    width: 100%;
+    animation: fadeSlideIn 0.4s ease;
 }
 
-.result-card {
-    background: var(--card-bg-color);
-    padding: 1.5rem;
-    border-radius: 10px;
-    text-align: center;
-    animation: fadeIn 0.5s ease-in-out;
+.screen.active {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.result-card h3 {
-    color: var(--gold-color);
-    font-size: 1.8rem;
-    margin-top: 0;
-}
-
-.result-card p {
-    font-size: 1.1rem;
-    line-height: 1.6;
-    white-space: pre-wrap; /* 운세 내용의 줄바꿈을 유지합니다. */
-}
-
-@keyframes fadeIn {
+@keyframes fadeSlideIn {
     from {
         opacity: 0;
-        transform: translateY(20px);
+        transform: translateY(24px);
     }
     to {
         opacity: 1;
@@ -126,65 +66,294 @@ h2 {
     }
 }
 
-@media (max-width: 600px) {
-    header h1 {
-        font-size: 2rem;
-    }
-
-    section {
-        padding: 1rem;
-    }
-
-    .horoscope-option {
-        width: 100%;
-        text-align: center;
-    }
-}
-
-/* Sub-selection Styles */
-#sub-selection-container {
-    display: none;
-    margin-top: 2rem;
-    padding-top: 1.5rem;
-    border-top: 1px dashed rgba(255, 215, 0, 0.4);
-    animation: fadeIn 0.5s ease-in-out;
-}
-
-#sub-selection-container h3 {
+/* 카드 */
+.card {
+    background: var(--card-bg);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 36px 28px;
+    width: 100%;
     text-align: center;
-    color: var(--text-color);
-    font-size: 1.3rem;
-    margin-bottom: 1.5rem;
 }
 
-.sub-selection-wrapper {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.75rem;
-    justify-content: center;
+/* 시작 화면 */
+.cat-emoji {
+    font-size: 64px;
+    margin-bottom: 12px;
 }
 
-.sub-selection-option {
-    background-color: transparent;
-    color: var(--text-color);
-    border: 1px solid var(--text-color);
-    padding: 0.6rem 1rem;
-    border-radius: 20px;
+.start-card h1 {
+    font-size: 28px;
+    color: var(--text-dark);
+    margin-bottom: 8px;
+}
+
+.subtitle {
+    font-size: 16px;
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin-bottom: 28px;
+}
+
+/* 버튼 */
+.btn {
+    font-family: 'Jua', sans-serif;
+    font-size: 17px;
+    padding: 14px 32px;
+    border: none;
+    border-radius: 14px;
     cursor: pointer;
-    font-size: 0.95rem;
+    transition: all 0.2s ease;
+    width: 100%;
+}
+
+.btn:active {
+    transform: scale(0.97);
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--pink), var(--yellow));
+    color: #fff;
+    box-shadow: 0 4px 14px rgba(255, 143, 171, 0.4);
+}
+
+.btn-primary:hover {
+    box-shadow: 0 6px 20px rgba(255, 143, 171, 0.5);
+    transform: translateY(-1px);
+}
+
+.btn-secondary {
+    background: var(--bg);
+    color: var(--text-dark);
+    border: 2px solid var(--pink-light);
+}
+
+.btn-secondary:hover {
+    background: var(--pink-light);
+    color: #fff;
+}
+
+/* 프로그레스 바 */
+.progress-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    margin-bottom: 24px;
+    width: 100%;
+    max-width: 260px;
+}
+
+.progress-step {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--card-bg);
+    border: 3px solid #e0e0e0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    color: var(--text-muted);
     transition: all 0.3s ease;
+    flex-shrink: 0;
 }
 
-.sub-selection-option:hover {
-    background-color: var(--gold-color);
-    color: var(--primary-color);
-    border-color: var(--gold-color);
+.progress-step.active {
+    border-color: var(--pink);
+    color: var(--pink);
+    background: var(--pink-light);
+    transform: scale(1.1);
 }
 
-.sub-selection-option.active {
-    background-color: var(--gold-color);
-    color: var(--primary-color);
-    border-color: var(--gold-color);
+.progress-step.done {
+    border-color: var(--green);
+    background: var(--green);
+    color: #fff;
+}
+
+.progress-line {
+    flex: 1;
+    height: 3px;
+    background: #e0e0e0;
+    transition: background 0.3s ease;
+}
+
+.progress-line.done {
+    background: var(--green);
+}
+
+/* 퀴즈 카드 */
+.quiz-label {
+    font-size: 14px;
+    color: var(--text-muted);
+    margin-bottom: 20px;
+}
+
+.quiz-meaning {
+    font-size: 32px;
     font-weight: bold;
-    box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+    color: var(--text-dark);
+    margin-bottom: 8px;
+    line-height: 1.3;
+}
+
+.quiz-hint {
+    font-size: 14px;
+    color: var(--pink);
+    margin-bottom: 24px;
+    letter-spacing: 3px;
+}
+
+.answer-input {
+    font-family: 'Jua', sans-serif;
+    width: 100%;
+    padding: 16px;
+    font-size: 20px;
+    text-align: center;
+    border: 2px solid #e8e8e8;
+    border-radius: 14px;
+    outline: none;
+    transition: border-color 0.2s ease;
+    background: #fafafa;
+    color: var(--text-dark);
+}
+
+.answer-input:focus {
+    border-color: var(--pink);
+    background: #fff;
+}
+
+.feedback {
+    min-height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    margin: 12px 0;
+}
+
+.feedback.correct {
+    color: var(--green);
+}
+
+.feedback.wrong {
+    color: #e63946;
+}
+
+#submit-btn {
+    margin-top: 4px;
+}
+
+/* 오답 화면 */
+.wrong-card h2 {
+    font-size: 24px;
+    margin-bottom: 12px;
+    color: var(--text-dark);
+}
+
+.wrong-card p {
+    font-size: 16px;
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin-bottom: 24px;
+}
+
+/* 보상 화면 */
+.reward-card {
+    padding: 28px 20px;
+}
+
+.reward-card h2 {
+    font-size: 22px;
+    margin-bottom: 4px;
+    color: var(--text-dark);
+}
+
+.reward-subtitle {
+    font-size: 14px;
+    color: var(--text-muted);
+    margin-bottom: 20px;
+}
+
+.video-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.video-wrapper {
+    position: relative;
+    width: 100%;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+    aspect-ratio: 9 / 16;
+    max-height: 400px;
+}
+
+.video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+#replay-btn {
+    margin-top: 8px;
+}
+
+/* 정답 맞힘 애니메이션 */
+@keyframes celebrate {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.card.celebrate {
+    animation: celebrate 0.4s ease;
+}
+
+/* 흔들림 애니메이션 (오답) */
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    20% { transform: translateX(-8px); }
+    40% { transform: translateX(8px); }
+    60% { transform: translateX(-6px); }
+    80% { transform: translateX(6px); }
+}
+
+.answer-input.shake {
+    animation: shake 0.4s ease;
+    border-color: #e63946;
+}
+
+/* 반응형 */
+@media (max-width: 480px) {
+    body {
+        padding: 12px;
+    }
+
+    .card {
+        padding: 28px 20px;
+    }
+
+    .cat-emoji {
+        font-size: 52px;
+    }
+
+    .start-card h1 {
+        font-size: 24px;
+    }
+
+    .quiz-meaning {
+        font-size: 26px;
+    }
+
+    .video-wrapper {
+        max-height: 340px;
+    }
 }
