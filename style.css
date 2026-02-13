@@ -45,19 +45,36 @@ p { line-height: 1.5; }
   justify-content: space-between;
   align-items: center;
   font-size: 18px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 #time-left { font-size: 30px; }
 
+.sound-toggle {
+  border: none;
+  border-radius: 999px;
+  background: #e2e8f0;
+  color: #0f172a;
+  font-size: 13px;
+  padding: 8px 12px;
+  margin-bottom: 14px;
+  cursor: pointer;
+}
+
 .score-wrap {
-  margin-bottom: 20px;
+  margin-bottom: 8px;
 }
 
 #score {
   display: block;
   font-size: 44px;
   margin-top: 6px;
+}
+
+.combo-text {
+  margin: 0 0 12px;
+  font-weight: 700;
+  color: #db2777;
 }
 
 .btn, .tap-btn {
@@ -88,13 +105,32 @@ p { line-height: 1.5; }
 }
 
 .tap-btn {
-  background: #38bdf8;
+  background: linear-gradient(140deg, #fb7185, #f97316);
   color: #fff;
   min-height: 120px;
   font-size: 36px;
+  box-shadow: 0 8px 20px rgba(249, 115, 22, 0.32);
+  transition: transform 120ms ease, box-shadow 160ms ease, filter 160ms ease;
 }
 
 .tap-btn:active { transform: scale(0.98); }
+.tap-btn.heated {
+  transform: scale(1.03);
+  box-shadow: 0 12px 28px rgba(236, 72, 153, 0.45);
+}
+
+.tap-btn.explode {
+  transform: scale(1.08);
+  filter: saturate(1.25);
+  box-shadow: 0 14px 34px rgba(239, 68, 68, 0.55);
+}
+
+.hype-text {
+  min-height: 24px;
+  margin: 10px 0 0;
+  font-weight: 700;
+  color: #7e22ce;
+}
 
 .share-message {
   min-height: 24px;
@@ -114,4 +150,10 @@ button:focus-visible {
   .card { padding: 20px; }
   #score { font-size: 40px; }
   .tap-btn { min-height: 110px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tap-btn {
+    transition: none;
+  }
 }
