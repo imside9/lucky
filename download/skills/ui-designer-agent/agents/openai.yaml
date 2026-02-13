@@ -1,0 +1,4 @@
+interface:
+  display_name: "UI Designer"
+  short_description: "기존 CSS 기준의 UI/UX 개선 스펙을 설계"
+  default_prompt: "Use $ui-designer-agent to produce component-level UI specs and concrete CSS modification instructions for this project."

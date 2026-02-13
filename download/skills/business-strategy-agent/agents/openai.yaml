@@ -1,0 +1,4 @@
+interface:
+  display_name: "Business Strategist"
+  short_description: "시장 조사와 경쟁 분석으로 기회 가설을 정리"
+  default_prompt: "Use $business-strategy-agent to analyze market trends, competitors, and opportunity hypotheses for this product idea."

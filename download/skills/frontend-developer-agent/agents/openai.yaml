@@ -1,0 +1,4 @@
+interface:
+  display_name: "Frontend Developer"
+  short_description: "프론트엔드 코드 변경과 결과 정리를 수행"
+  default_prompt: "Use $frontend-developer-agent to implement the requested frontend changes and summarize modified files and verification results."
